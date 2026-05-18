@@ -1,14 +1,14 @@
 ---
-name: bypass-permissions
+name: claude-permissions
 description: >
-  Toggle Claude Code permission mode ON/OFF. ON = all tool calls run without approval prompts.
+  Configure Claude Code permission mode ON/OFF. ON = all tool calls run without approval prompts.
   Asks scope (project-local or global) before acting. Supports revert via backup.
 argument-hint: "[on|off|revert]"
 allowed-tools: [Read, Write, Edit, Bash, Glob, AskUserQuestion]
 disable-model-invocation: true
 ---
 
-# Bypass Permissions
+# Claude Permissions
 
 Toggle Claude Code's permission mode. When ON, all tool calls execute without user approval prompts.
 
@@ -134,11 +134,11 @@ Merge rules:
 1. Summarize changes (what keys changed, old → new).
 2. Tell user: "已写入 <path>。输入 `/compact` 使当前会话即刻生效。"
 3. Tell user how to undo:
-   - "恢复默认：`/bypass-permissions off`"
-   - "回退备份：`/bypass-permissions revert`"
+   - "恢复默认：`/claude-permissions off`"
+   - "回退备份：`/claude-permissions revert`"
 
 ## Notes
 
 - The `allow` list is best-effort across Windows/Mac/Linux. Platform-specific commands (e.g., `taskkill`, `reg query`) are harmless on other platforms — they just never match.
-- `disable-model-invocation: true` means this skill is NEVER auto-triggered. Only manual `/bypass-permissions` activates it.
+- `disable-model-invocation: true` means this skill is NEVER auto-triggered. Only manual `/claude-permissions` activates it.
 - Project-local settings override global settings when both exist.
